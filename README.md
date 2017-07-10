@@ -2,6 +2,4 @@
 
 Team Leader: Jonas Divinagracia
 
-Team Members: Elijah San Pedro - Systems Integrator
-
-            : Darrell Dane Tin - Systems Developer
+Team Members: Elijah San Pedro - Systems Integration, Darrell Dane Tin - Systems Developer
