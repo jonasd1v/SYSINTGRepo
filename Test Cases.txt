@@ -1,0 +1,20 @@
+Login
+The user cannot enter blank username
+The user cannot enter blank password
+The user is prompted when the username is incorrect
+The user is prompted when the password is incorrect
+The user is able to get out of the login by clicking Cancel
+The user is able to login with the correct credentials
+The table page is seen once the user logs in correctly
+
+Group By
+The user is able to group by age
+The user is able to group by universtity
+
+Sort
+Sort the name of the voters (Asc)
+Sort the name of the voters (Desc)
+
+
+View total number
+The user is able to view the total number of students in each University
