@@ -1,7 +1,7 @@
 <?php
 
 	if (isset($_POST['submit'])){
-		require_once('C:\xampp\htdocs\TEST\pages\db_connect.php');
+		require_once('C:\xampp\htdocs\SYSINTGRepo\FinalProject\pages\db_connect.php');
 		$message=NULL;
 		$status_query = "select * from users"; 
 		$stat_result=mysqli_query($dbc,$status_query);	
