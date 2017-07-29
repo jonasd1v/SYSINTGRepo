@@ -1,24 +1,11 @@
 <?php
-
+	session_start();
 	if (isset($_POST['submit'])){
 		require_once('C:\xampp\htdocs\SYSINTGRepo\FinalProject\pages\db_connect.php');
 		$message=NULL;
 		$status_query = "select * from users"; 
 		$stat_result=mysqli_query($dbc,$status_query);	
 		$sRow=mysqli_fetch_array($stat_result,MYSQLI_ASSOC);
-		
-		/*if (empty($_POST['username'])){
-		  $_SESSION['username']=FALSE;
-		  $message.='<p>You forgot to enter your username!';
-		} else {
-		  $_SESSION['username']=$_POST['username']; 
-		}
-		if (empty($_POST['password'])){
-		  $_SESSION['password']=FALSE;
-		  $message.='<p>You forgot to enter your password!';
-		} else {
-		  $_SESSION['password']=$_POST['password']; 		
-		}*/
 		
 		$count=0;
 		if(!isset($message)){
@@ -41,7 +28,8 @@
 		if ($count!=0){		
 			
 			$row = mysqli_fetch_assoc($result);
-				
+				$_SESSION['username'] = $user;
+				$_SESSION['logged_in'] = true;
 				header("Location: pages\index.php");
 			
 		}else{
@@ -52,6 +40,10 @@
 
 	if (isset($message)){
 	 echo '<font color="red">'.$message. '</font>';
+	}
+
+	if(isset($_SESSION['username'])){
+		header("Location: pages\index.php");
 	}
 ?>
 <!DOCTYPE html>
