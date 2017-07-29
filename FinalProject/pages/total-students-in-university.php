@@ -66,7 +66,7 @@ require_once ('db_connect.php');
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header"; style = "text-align: center;" 
-                            University Data <small>University Data</small>
+                            <small>University Data</small>
                         </h1>
                     </div>
                 </div>
@@ -74,28 +74,22 @@ require_once ('db_connect.php');
                  <div class="row">
                     <div class="col-lg-12">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover table-bordered" id="student-table">
+                            <table class="table table-striped table-hover table-bordered" id="school-table">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">Last Name</th>
-                                        <th class="text-center">First Name</th>
-                                        <th class="text-center">Age</th>
-                                        <th class="text-center">Birthday</th>
-										<th class="text-center">University</th>
+                                        <th class="text-center">University</th>
+                                        <th class="text-center">Total No. of Students</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $query = "SELECT * FROM students";
+                                        $query = "SELECT DISTINCT University as 'UNIV', COUNT(LASTNAME) AS 'TOTAL' FROM students GROUP BY UNIVERSITY";
                                         $result=mysqli_query($dbc,$query);
                                         while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
                                             ?>
                                             <tr>                                                    
-                                                    <td class="text-center"><?php echo $row['LastName']; ?></td>
-                                                    <td class="text-center"><?php echo $row['FirstName']; ?></td>
-                                                    <td class="text-center"><?php echo 2017-$row['Birthday']; ?></td>
-                                                    <td class="text-center"><?php echo $row['Birthday']; ?></td>  
-                                                    <td class="text-center"><?php echo $row['University']; ?></td>                                                       
+                                                    <td class="text-center"><?php echo $row['UNIV']; ?></td>
+                                                    <td class="text-center"><?php echo $row['TOTAL']; ?></td>                                                       
                                             </tr>
                                         <?php } ?>
                                     
@@ -127,10 +121,9 @@ require_once ('db_connect.php');
     <script src="../js/plugins/morris/raphael.min.js"></script>
     <script src="../js/plugins/morris/morris.min.js"></script>
     <script src="../js/plugins/morris/morris-data.js"></script>
+	
+	
 
-     <script>
-        $('#student-table').dataTable();
-    </script>
     
 </body>
 
