@@ -47,7 +47,7 @@ require_once ('db_connect.php');
             
             <!-- Top Menu Items -->
             <ul class="nav navbar-left top-nav">
-                 <li style="position: relative; align-content: left;">
+                 <li>
                     <a href="index.php">View All Students</a>
                 </li>
                 <li class>
@@ -57,7 +57,13 @@ require_once ('db_connect.php');
                     <a href="group-by.php">Group By</a>
                 </li>
     
-            </ul></div>
+            </ul>
+            <ul class="nav navbar-right top-nav">
+                <li> 
+                    <a href="../login.php">Logout</a>
+                </li>
+            </ul>
+            </div>
 
         <!-- Navigation -->
         

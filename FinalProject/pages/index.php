@@ -57,6 +57,11 @@ require_once ('db_connect.php');
                     <a href="group-by.php">Group By</a>
                 </li>
     
+            </ul>
+             <ul class="nav navbar-right top-nav">
+                <li> 
+                    <a href="../login.php">Logout</a>
+                </li>
             </ul></div>
 
         <!-- Navigation -->
