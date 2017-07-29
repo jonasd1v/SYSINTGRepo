@@ -83,12 +83,12 @@ require_once ('db_connect.php');
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $query = "SELECT DISTINCT University as 'UNIV', COUNT(LASTNAME) AS 'TOTAL' FROM students GROUP BY UNIVERSITY";
+                                        $query = "SELECT University, COUNT(LASTNAME) AS 'TOTAL' FROM students GROUP BY UNIVERSITY";
                                         $result=mysqli_query($dbc,$query);
                                         while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
                                             ?>
                                             <tr>                                                    
-                                                    <td class="text-center"><?php echo $row['UNIV']; ?></td>
+                                                    <td class="text-center"><?php echo $row['University']; ?></td>
                                                     <td class="text-center"><?php echo $row['TOTAL']; ?></td>                                                       
                                             </tr>
                                         <?php } ?>
