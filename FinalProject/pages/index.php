@@ -89,14 +89,14 @@ require_once ('db_connect.php');
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $query = "SELECT * FROM students";
+                                        $query = "SELECT LastName, FirstName, FLOOR(DATEDIFF(NOW(),birthday) /365) as 'AGE', Birthday, University FROM students";
                                         $result=mysqli_query($dbc,$query);
                                         while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
                                             ?>
                                             <tr>                                                    
                                                     <td class="text-center"><?php echo $row['LastName']; ?></td>
                                                     <td class="text-center"><?php echo $row['FirstName']; ?></td>
-                                                    <td class="text-center"><?php echo 2017-$row['Birthday']; ?></td>
+                                                    <td class="text-center"><?php echo $row['AGE']; ?></td>
                                                     <td class="text-center"><?php echo $row['Birthday']; ?></td>  
                                                     <td class="text-center"><?php echo $row['University']; ?></td>                                                       
                                             </tr>
