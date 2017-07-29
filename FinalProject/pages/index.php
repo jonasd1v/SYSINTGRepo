@@ -53,6 +53,9 @@ require_once ('db_connect.php');
                 <li class>
                     <a href="total-students-in-university.php">View Total Students</a>
                 </li>
+				 <li class>
+                    <a href="group-by.php">Group By</a>
+                </li>
     
             </ul></div>
 
