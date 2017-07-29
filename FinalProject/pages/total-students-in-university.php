@@ -1,5 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['username'])) {
+        header("Location: ../login.php");
+        die();
+    }else{
 require_once ('db_connect.php');
+}
 
 ?>
 <!DOCTYPE html>
@@ -46,21 +52,21 @@ require_once ('db_connect.php');
     <nav class="navbar navbar-fixed-top" role="navigation">
             
             <!-- Top Menu Items -->
-            <ul class="nav navbar-left top-nav">
+            <ul class="nav navbar-left top-nav" style="position: fixed; top:0; width: 100%; background-color:#222">
                  <li>
-                    <a href="index.php">View All Students</a>
+                    <a href="index.php" style="color:white">View All Students</a>
                 </li>
                 <li class>
-                    <a href="total-students-in-university.php">View Total Students</a>
+                    <a href="total-students-in-university.php" style="color:white">View Total Students</a>
                 </li>
 				 <li class>
-                    <a href="group-by.php">Group By</a>
+                    <a href="group-by.php" style="color:white">Group By</a>
                 </li>
     
             </ul>
             <ul class="nav navbar-right top-nav">
                 <li> 
-                    <a href="../login.php">Logout</a>
+                    <a href="logout.php" style="color:white">Logout</a>
                 </li>
             </ul>
             </div>

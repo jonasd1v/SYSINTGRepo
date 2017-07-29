@@ -1,5 +1,11 @@
 <?php
-require_once ('db_connect.php');
+session_start();
+if (!isset($_SESSION['username'])) {
+        header("Location: ../login.php");
+        die();
+    }else{
+        require_once ('db_connect.php');
+}
 
 ?>
 <!DOCTYPE html>
@@ -15,8 +21,8 @@ require_once ('db_connect.php');
 
     <title>University Data</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS-->
+    <link href="../css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="../css/sb-admin.css" rel="stylesheet">
@@ -46,23 +52,24 @@ require_once ('db_connect.php');
     <nav class="navbar navbar-fixed-top" role="navigation">
             
             <!-- Top Menu Items -->
-            <ul class="nav navbar-left top-nav">
-                 <li style="position: relative; align-content: left;">
-                    <a href="index.php">View All Students</a>
+            <ul class="nav navbar-left top-nav" style="position: fixed; top:0; width: 100%; background-color:#222">
+                 <li>
+                    <a href="index.php" style="color:white">View All Students</a>
                 </li>
-                <li class>
-                    <a href="total-students-in-university.php">View Total Students</a>
+                <li>
+                    <a href="total-students-in-university.php" style="color:white">View Total Students</a>
                 </li>
-				 <li class>
-                    <a href="group-by.php">Group By</a>
+				 <li>
+                    <a href="group-by.php" style="color:white">Group By</a>
                 </li>
     
             </ul>
              <ul class="nav navbar-right top-nav">
                 <li> 
-                    <a href="../login.php">Logout</a>
+                    <a href="../pages/logout.php" style="color:white">Logout</a>
                 </li>
             </ul></div>
+            </nav>
 
         <!-- Navigation -->
         
@@ -82,7 +89,7 @@ require_once ('db_connect.php');
                  <div class="row">
                     <div class="col-lg-12">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover table-bordered" id="student-table">
+                            <table class="table table-striped table-bordered" id="student-table">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Last Name</th>
@@ -117,7 +124,6 @@ require_once ('db_connect.php');
 
         </div>
         <!-- /#page-wrapper -->
-
     <!--/div-->
 
     <!-- jQuery -->
