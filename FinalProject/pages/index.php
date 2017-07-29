@@ -1,6 +1,6 @@
 <?php
 require_once ('db_connect.php');
-
+echo "hello";
 ?>
 <!DOCTYPE html>
 <html lang="en">
