@@ -82,7 +82,7 @@
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         	<div class="form-group">
             	<div class="login"> 
-            	<h3 style="text-align: center;"">LOGIN</h3>
+            	<h3 style="text-align: center;" class="page-header">LOGIN</h3>
                 	<input class="form-control input-text" placeholder="Username" name="username" type="text"  value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>" required style="border-color: #111"/>
                     	<div class="form-group">
                         	<input class="form-control input-text" placeholder="Password" name="password" type="password" required style="border-color: #111">
