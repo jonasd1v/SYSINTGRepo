@@ -33,14 +33,10 @@
 				header("Location: pages\index.php");
 			
 		}else{
-			//echo "Please try again";
+			// "Please try again";
 		}			
 		
 	}/*End of main Submit conditional*/
-
-	if (isset($message)){
-	 echo '<font color="red">'.$message. '</font>';
-	}
 
 	if(isset($_SESSION['username'])){
 		header("Location: pages\index.php");
@@ -59,14 +55,17 @@
 
     <title>Login</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS-->
+    <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -77,36 +76,35 @@
 
 </head>
 
-<body>
+<body class="loginpage">
 
     <div class="container">
-    	<h3 class="page-header" style="text-align: center">Please log-in</h3>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         	<div class="form-group">
-            	<div class="col-xs-2" style="position:relative; left: 42%">        
-                	<input class="form-control" placeholder="Username" name="username" type="text"  value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>" required/>
+            	<div class="login"> 
+            	<h3 style="text-align: center;"">LOGIN</h3>
+                	<input class="form-control input-text" placeholder="Username" name="username" type="text"  value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>" required style="border-color: #111"/>
                     	<div class="form-group">
-                        	<input class="form-control" placeholder="Password" name="password" type="password" required>
+                        	<input class="form-control input-text" placeholder="Password" name="password" type="password" required style="border-color: #111">
                         </div>
                         <div align="center">
-                        	<button type="submit" name="submit" />Login</button>
+                        	<button type="submit" name="submit" class="btn-login" style="color:white"/>Log-in</button>
                         </div> 
-                        </div>   
+                        </div>
             </div>	
         </form>
     </div>
 
     <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+   <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
 
 </body>
 
