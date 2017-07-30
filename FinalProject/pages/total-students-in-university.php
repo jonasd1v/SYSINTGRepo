@@ -22,7 +22,7 @@ require_once ('db_connect.php');
     <title>University Data</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="../css/sb-admin.css" rel="stylesheet">
@@ -80,7 +80,7 @@ require_once ('db_connect.php');
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"; style = "text-align: center;" 
+                        <h1 class="page-header"; style = "text-align: center;"> 
                             <small>University Data</small>
                         </h1>
                     </div>
@@ -89,7 +89,7 @@ require_once ('db_connect.php');
                  <div class="row">
                     <div class="col-lg-12">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover table-bordered" id="school-table">
+                            <table class="table table-striped table-bordered" id="school-table">
                                 <thead>
                                     <tr>
                                         <th class="text-center">University</th>
