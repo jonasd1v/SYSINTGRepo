@@ -133,7 +133,7 @@ if (!isset($_SESSION['username'])) {
     <title>University Data</title>
 
      <!-- Bootstrap Core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="../css/sb-admin.css" rel="stylesheet">
@@ -176,7 +176,7 @@ if (!isset($_SESSION['username'])) {
             </ul>
              <ul class="nav navbar-right top-nav">
                 <li> 
-                    <a href="../login.php" style="color:white">Logout</a>
+                    <a href="logout.php" style="color:white">Logout</a>
                 </li>
             </ul></div>
 
@@ -215,8 +215,8 @@ if (!isset($_SESSION['username'])) {
 										    group by university";
 									$result = mysqli_query($dbc,$query);	
 					
-									echo "<select multiple size='8' name='university[]' id='universityDropdown' style='display:none;'>";
-
+									echo "<select name='university[]' id='universityDropdown' style='display:none;'>";
+									echo '<option value="" disabled selected>Select University</option>';
 									while ($row = $result->fetch_assoc()) {
 										unset($university);
 										$university = $row['university']; 
@@ -239,7 +239,7 @@ if (!isset($_SESSION['username'])) {
 							
 							<?php if ($tableTitle != null) { echo "<center>$tableTitle</center>";} ?>
 						
-							<table width="100%" class="table table-striped table-bordered table-hover" id="students-table">						
+							<table width="100%" class="table table-striped table-bordered" id="students-table">						
 								<thead>
 									<tr>
 										<th class="text-center">Last Name</th>
@@ -328,7 +328,7 @@ if (!isset($_SESSION['username'])) {
 		}
 		document.getElementById(box).style.display = vis;
 	}
-	</script>
+	</script>-->
 
 	<script>
 	<?php 
