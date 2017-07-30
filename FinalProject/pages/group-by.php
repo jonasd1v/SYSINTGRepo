@@ -9,9 +9,6 @@ if (!isset($_SESSION['username'])) {
 		$continueQuery = false;
 		$tableTitle = null;
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {									
-			$dateToday = date('Y-m-d');
-			$message=NULL;
-			
 			$lowestAge = 0;
 			$highestAge = 0;
 			$university = "";
@@ -22,13 +19,13 @@ if (!isset($_SESSION['username'])) {
 			if(isset($_POST['ageCheckbox'])){
 				$groupByAge = true;
 				if (!empty($_POST['lowestAge']) && !is_numeric($_POST['lowestAge'])) {
-					$message.='Invalid age Input<br>';
+					$message = "Invalid input";
 				}
 				if (!empty($_POST['highestAge']) && !is_numeric($_POST['highestAge'])) {
-					$message.='Invalid age Input<br>';
+					$message = "Invalid input";
 				}
 				if (empty($_POST['lowestAge']) && empty($_POST['highestAge']) ) {
-					$message.='Invalid age Input<br>';
+					$message = "Invalid input";
 					$continueQuery = false;
 				}
 				
@@ -40,7 +37,7 @@ if (!isset($_SESSION['username'])) {
 			}
 			
 			if (!isset($_POST['universityCheckbox']) && !isset($_POST['ageCheckbox'] )) {
-				$message.='Please check age or university<br>';
+				$message = "Invalid input";
 			}
 										
 			if (!isset($message)) {
@@ -56,24 +53,21 @@ if (!isset($_SESSION['username'])) {
 					}
 				}
 				
-				// group by age only
 				if ($groupByAge && !$groupByUniversity) {
 					$tableTitle = "<center><b>Age:</b> $lowestAge to $highestAge<br><br></center><br>";
-					$groupByQuery =	$groupByQuery =	"Select LastName, FirstName, FLOOR(DATEDIFF(NOW(),Birthday) /365) as 'AGE', university  
-									 From
-									 (
-									   select
-										  FirstName, 
-										  LastName,
+					$groupByQuery =	$groupByQuery =	"SELECT LastName, FirstName, FLOOR(DATEDIFF(NOW(),Birthday) /365) AS 'AGE', university  
+									 FROM
+									 (  SELECT
+										  LastName, 
+										  FirstName,
 										  Birthday,
 										  FLOOR(DATEDIFF(NOW(),Birthday) /365) AS AGE,
 										  University
-									   from students   
-									 ) as innerTable
-									 Where AGE >= '$lowestAge' and
+									   FROM students)
+									   WHERE AGE >= '$lowestAge' AND
 										   AGE <= '$highestAge' ";
 				}
-				// group by university only
+
 				else if (!$groupByAge && $groupByUniversity) {
 					
 					$universityString = "";
@@ -84,13 +78,11 @@ if (!isset($_SESSION['username'])) {
 
 					$university = implode("','", $_POST['university']);
 					
-					$groupByQuery =	"Select LastName,FirstName, FLOOR(DATEDIFF(NOW(),Birthday) /365) as 'AGE', University  
-									   From students
-									  Where University in ('$university')";
+					$groupByQuery =	"SELECT LastName,FirstName, FLOOR(DATEDIFF(NOW(),Birthday) /365) AS 'AGE', University  
+									 FROM students
+									 WHERE University IN ('$university')";
 				}
-				// group by age and university
 				else if ($groupByAge && $groupByUniversity) {
-					
 					$universityString = "";
 					foreach ($_POST['university'] as $university){									
 						$universityString.= $university;
@@ -100,20 +92,20 @@ if (!isset($_SESSION['username'])) {
 					
 					$university = implode("','", $_POST['university']);
 					
-					$groupByQuery =	"Select LastName,FirstName, FLOOR(DATEDIFF(NOW(),Birthday) /365) as 'AGE', University  
-									 From
+					$groupByQuery =	"SELECT LastName,FirstName, FLOOR(DATEDIFF(NOW(),Birthday) /365) AS 'AGE', University  
+									 FROM
 									 (
-									   select
+									   SELECT
 										  FirstName, 
 										  LastName,
 										  Birthday,
 										  FLOOR(DATEDIFF(NOW(),Birthday) /365) AS AGE,
 										  University
-									   from students   
-									 ) as innerTable
-									 Where AGE >= '$lowestAge' and
-										   AGE <= '$highestAge' and
-										   University in ('$university') ";
+									   FROM students   
+									 ) AS innerTable
+									 WHERE AGE >= '$lowestAge' AND
+										   AGE <= '$highestAge' AND
+										   University IN ('$university') ";
 				}																		
 			}
 			else {
@@ -189,8 +181,8 @@ if (!isset($_SESSION['username'])) {
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"; style = "text-align: center;" 
-                            University Data <small>University Data</small>
+                        <h1 class="page-header"; style = "text-align: center;"> 
+                           <small>University Data</small>
                         </h1>
                     </div>
                 </div>
@@ -202,10 +194,10 @@ if (!isset($_SESSION['username'])) {
                 <div class="col-lg-12">
 							<form id="groupByForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">	
 								<div>
-									<b>Group By:</b>
-									<input type="checkbox" name="universityCheckbox" onclick="showUniversityDropdown('universityDropdown')" value="" <?php if (isset($_POST['universityCheckbox'])) echo $_POST['universityCheckbox']; ?>> University
-									<input type="checkbox" name="ageCheckbox" onclick="showAgeInput('ageInput')" <?php if (isset($_POST['ageCheckbox'])) echo $_POST['ageCheckbox']; ?>> Age
-									<input type="submit" value="Submit"><br><br>
+									<b>Grouping Options:</b> <br>
+									<input type="checkbox" name="universityCheckbox" onclick="showUniversityDropdown('universityDropdown')" value=""> University
+									<input type="checkbox" name="ageCheckbox" onclick="showAgeInput('ageInput')"> Age
+									<input type="submit" value="Group"><br><br>
 								</div>
 								
 								<?php
@@ -328,15 +320,6 @@ if (!isset($_SESSION['username'])) {
 		}
 		document.getElementById(box).style.display = vis;
 	}
-	</script>-->
-
-	<script>
-	<?php 
-		if (isset($message)) {
-			echo '$("#error-alert").show();';
-		}
-			
-	?>	
 	</script>
 
 </body>
