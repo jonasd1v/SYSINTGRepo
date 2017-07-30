@@ -4,11 +4,10 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
-/* Global Styles */
+Global Styles
 
 body {
     margin-top: 100px;
-    background-color: #222;
 }
 
 @media(min-width:768px) {
@@ -30,6 +29,10 @@ body {
 .huge {
     font-size: 50px;
     line-height: normal;
+}
+
+.main{
+    background-color:green;
 }
 
 @media(min-width:768px) {
@@ -225,3 +228,4 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+
